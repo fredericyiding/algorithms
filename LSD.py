@@ -8,22 +8,23 @@ class LSD:
 					self.a.append(string)
 		self.W = len(self.a[0])
 		self.R = 256
-		self.N = len(a)
+		self.N = len(self.a)
 		self.aux = [0] * self.N
-		self.count = [0] * (R + 1)
+
 
 	def sort(self):
+		count = [0] * (self.R + 1)
 		for d in reversed(range(self.W - 1)):
 
 			for i in range(self.N):
-				self.count[self.a[i] + 1] += 1
+				count[ord(self.a[i][d]) - ord('a') + 1] += 1
 
 			for r in range(self.R):
-				self.count[r + 1] += self.count[r]
+				count[r + 1] += count[r]
 
 			for i in range(self.N):
-				self.aux[self.count[self.a[i]]] = self.a[i]
-				self.count[self.a[i]] += 1
+				self.aux[count[ord(self.a[i][d]) - ord('a')]] = self.a[i]
+				count[ord(self.a[i][d]) - ord('a')] += 1
 
 			self.a = self.aux
 		
