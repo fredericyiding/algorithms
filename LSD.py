@@ -1,8 +1,12 @@
 class LSD:
-	def __init__(self, a, W):
+	def __init__(self, filename):
 		# a is list of strings with fixed length W
 		self.a = []
-		self.W = W
+		with open(filename) as f:
+			for line in f:
+				for string in line.split():
+					self.a.append(string)
+		self.W = len(self.a[0])
 		self.R = 256
 		self.N = len(a)
 		self.aux = [0] * self.N
