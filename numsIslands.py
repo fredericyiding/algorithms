@@ -26,6 +26,8 @@ class Solution:
 		
 
 		"""
+		if method != 'bfs' or 'dfs':
+			raise ValueError("Please enter 'bfs' or 'dfs'")
 		self.grid = grid
 		self.m = len(grid)
 		if self.m == 0:
@@ -37,12 +39,10 @@ class Solution:
 		for row in range(self.m):
 			for col in range(self.n):
 				if self.check(row, col):
-					if method == 'bfs':
+					if method.lower() == 'bfs':
 						self.bfs(row, col)
-					elif method == 'dfs':
+					elif method.lower() == 'dfs':
 						self.dfs(row, col)
-					else:
-						break
 					count += 1
 
 		return count
