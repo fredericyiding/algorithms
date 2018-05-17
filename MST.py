@@ -139,7 +139,7 @@ class LazyPrimMST:
 
         self.visit(G, 0)
 
-        while len(self.pq) is not 0:
+        while len(self.pq) is not 0: # or while self.pq:
             print self.pq
             time.sleep(1)
             e = heappop(self.pq)

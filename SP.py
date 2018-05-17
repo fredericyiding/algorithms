@@ -9,16 +9,16 @@ class DirectedEdge:
     
     def __repr__(self):
         return 'Directed Edge instance: ' + str(self.v) + '->' + str(self.w) + ', ' + str(self.weight)
-    
+
     def start(self):
         return self.v
-    
+
     def end(self):
         return self.w
 
     def __lt__(self, that):
         return self.weight < that.getWeight()
-    
+
     def getWeight(self):
         return self.weight
 
@@ -34,28 +34,28 @@ class EdgeWeightedDiGraph:
                 self.adj[v] = Counter()  # each item of self.adj is a bag; and the self.getEdges() also returns a bag
             for line in f:
                 line = line.split()
-                v, w, weight = int(line[0]), int(line[1]),float(line[2])
+                v, w, weight = int(line[0]), int(line[1]), float(line[2])
                 self.addEdge(DirectedEdge(v, w, weight))
-    
+
     def getV(self):
         return self.V
 
     def getE(self):
         return self.E
-    
+
     def addEdge(self, e):
-        start = e.start() 
+        start = e.start()
         self.adj[start][e] += 1
         return
-    
+
     def getAdj(self, v):
         return self.adj[v]
-    
+
     def getEdges(self):
         bag = Counter()  # can also be a list
         for v in range(self.V):
             for edge in self.adj[v]:
-                    bag[edge] += 1
+                bag[edge] += 1
         return bag
 
 class DijkstraSP:
